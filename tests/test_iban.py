@@ -35,3 +35,11 @@ def test_invalid_country_code_is_false():
 
 def test_non_digit_check_digits_is_false():
     assert is_valid_iban("DEXX 3704 0044 0532 0130 00") is False
+
+
+def test_non_ascii_bban_character_is_false():
+    assert is_valid_iban("DE89Ä") is False
+
+
+def test_non_ascii_bban_character_is_false_full_length():
+    assert is_valid_iban("DE89 3704 0044 0532 0130 Ä0") is False

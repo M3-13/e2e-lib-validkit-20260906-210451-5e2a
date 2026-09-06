@@ -22,7 +22,7 @@ def is_valid_iban(text: str) -> bool:
     if not check_digits.isdigit():
         return False
 
-    if not bban or not all(c.isalnum() for c in bban):
+    if not bban or not all(c.isascii() and c.isalnum() for c in bban):
         return False
 
     rearranged = bban + country + check_digits
