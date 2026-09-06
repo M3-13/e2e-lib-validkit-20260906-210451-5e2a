@@ -19,6 +19,10 @@ def test_keep_larger_than_length_is_fully_masked():
     assert mask_secret("ab", keep=10) == "**"
 
 
+def test_keep_zero_masks_everything():
+    assert mask_secret("abc", keep=0) == "***"
+
+
 def test_negative_keep_raises_value_error():
     with pytest.raises(ValueError):
         mask_secret("abc", keep=-1)

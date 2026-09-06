@@ -7,6 +7,6 @@ def mask_secret(text: str, keep: int = 4) -> str:
         raise ValueError("keep must be >= 0")
 
     visible = min(keep, len(text))
-    if visible >= len(text):
+    if visible <= 0 or visible >= len(text):
         return "*" * len(text)
     return "*" * (len(text) - visible) + text[-visible:]
